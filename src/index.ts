@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/loginAccount', async (req: Request, res: Response) => {
-  const loginResult = await loginAccount(req.params)
+  const loginResult = await loginAccount(req.body)
   res.send(loginResult)
 })
 
