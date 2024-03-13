@@ -4,6 +4,7 @@ import loginAccount from './services/accounts.login.service'
 import upsertAccount from './services/accounts.upsert.service'
 import mongoose from 'mongoose'
 import multer from 'multer';
+import { pathOr } from 'ramda';
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
@@ -30,7 +31,9 @@ const upload = multer({
 });
 
 app.get('/loginAccount', upload.single('file'), async (req: Request, res: Response) => {
-  const loginResult = await loginAccount(req.body)
+  const email = pathOr('', ['email'], req.query);
+  const password = pathOr('', ['password'], req.query);
+  const loginResult = await loginAccount({ email, password })
   res.send(loginResult)
 });
 

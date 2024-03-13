@@ -9,6 +9,7 @@ const accounts_login_service_1 = __importDefault(require("./services/accounts.lo
 const accounts_upsert_service_1 = __importDefault(require("./services/accounts.upsert.service"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const multer_1 = __importDefault(require("multer"));
+const ramda_1 = require("ramda");
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
 const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -28,7 +29,9 @@ const upload = (0, multer_1.default)({
     },
 });
 app.get('/loginAccount', upload.single('file'), async (req, res) => {
-    const loginResult = await (0, accounts_login_service_1.default)(req.body);
+    const email = (0, ramda_1.pathOr)('', ['email'], req.query);
+    const password = (0, ramda_1.pathOr)('', ['password'], req.query);
+    const loginResult = await (0, accounts_login_service_1.default)({ email, password });
     res.send(loginResult);
 });
 app.post('/upsertAccount', async (req, res) => {
