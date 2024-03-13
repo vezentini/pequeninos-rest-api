@@ -7,15 +7,18 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const accounts_login_service_1 = __importDefault(require("./services/accounts.login.service"));
 const accounts_upsert_service_1 = __importDefault(require("./services/accounts.upsert.service"));
-const mongoose_1 = __importDefault(require("mongoose"));
+const connect_service_1 = require("./libs/database/connect.service");
+const promises_1 = require("timers/promises");
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
-const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
+});
+(0, promises_1.setTimeout)(60000, async () => {
+    await (0, connect_service_1.connect)();
 });
 app.get('/loginAccount', async (req, res) => {
     const loginResult = await (0, accounts_login_service_1.default)(req.params);
@@ -27,9 +30,6 @@ app.post('/upsertAccount', async (req, res) => {
 });
 app.use((0, cors_1.default)({
     origin: '*'
-}));
-Promise.resolve(mongoose_1.default.connect(URI).catch(() => {
-    console.log('Failed to connect into mongo by URI');
 }));
 app.use((req, res) => {
     res.status(404);
