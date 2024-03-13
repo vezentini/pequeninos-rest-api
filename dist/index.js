@@ -6,14 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const account_route_1 = __importDefault(require("./routes/account.route"));
+const routes_1 = require("./routes");
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
 const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use('/accounts', account_route_1.default);
+app.use('/accounts', routes_1.accountsRouter);
+app.use('/classes', routes_1.classRouter);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });

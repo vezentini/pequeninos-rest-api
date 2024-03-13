@@ -1,11 +1,7 @@
-import express, { Request, Response } from 'express'
+import express, { } from 'express'
 import cors from 'cors'
-import loginAccount from './services/accounts/accounts.login.service'
-import upsertAccount from './services/accounts/accounts.upsert.service'
 import mongoose from 'mongoose'
-import multer from 'multer';
-import { pathOr } from 'ramda';
-import accountsRouter from './routes/account.route'
+import { accountsRouter, classRouter } from './routes'
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
@@ -17,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/accounts', accountsRouter)
+app.use('/classes', classRouter)
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo!')

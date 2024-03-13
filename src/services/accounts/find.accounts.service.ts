@@ -1,5 +1,5 @@
 import { AccountsFilterInput } from '../../entities/inputs';
-import { Accounts, IAccount, IAccountsList } from '../../entities/interfaces';
+import { Accounts, IAccountsList } from '../../entities/interfaces';
 import IAccountModal from '../../entities/interfaces/account.interface';
 import { isEmpty } from 'ramda'
 

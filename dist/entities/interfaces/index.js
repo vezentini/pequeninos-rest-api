@@ -17,3 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./account.interface"), exports);
 __exportStar(require("./account.login.interface"), exports);
 __exportStar(require("./accounts.list.interface"), exports);
+__exportStar(require("./classes.list.interface"), exports);
+__exportStar(require("./class.interface"), exports);
