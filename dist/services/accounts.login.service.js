@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const interfaces_1 = require("../entities/interfaces");
 const loginAccount = async (filter) => {
-    if (!(filter === null || filter === void 0 ? void 0 : filter.email) || !(filter === null || filter === void 0 ? void 0 : filter.password))
+    const { email, password } = filter;
+    if (!email || !password)
         return { success: false, account: null };
-    const accountDb = await interfaces_1.Accounts.findOne(Object.assign({}, filter));
+    const accountDb = await interfaces_1.Accounts.findOne({ email, password });
     if (accountDb === null)
         return { success: false, account: null };
     return { success: true, account: accountDb };

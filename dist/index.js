@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const accounts_login_service_1 = __importDefault(require("./services/accounts.login.service"));
 const accounts_upsert_service_1 = __importDefault(require("./services/accounts.upsert.service"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const multer_1 = __importDefault(require("multer"));
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
 const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -17,7 +18,16 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });
-app.get('/loginAccount', async (req, res) => {
+const storage = multer_1.default.memoryStorage();
+const size = 150 * 1024 * 1024;
+const upload = (0, multer_1.default)({
+    storage,
+    limits: {
+        fileSize: size,
+        fieldSize: size,
+    },
+});
+app.get('/loginAccount', upload.single('file'), async (req, res) => {
     const loginResult = await (0, accounts_login_service_1.default)(req.body);
     res.send(loginResult);
 });
