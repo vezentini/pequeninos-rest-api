@@ -8,6 +8,16 @@ const loginAccount = async (filter) => {
     const accountDb = await interfaces_1.Accounts.findOne({ email, password });
     if (accountDb === null)
         return { success: false, account: null };
-    return { success: true, account: Object.assign({}, accountDb) };
+    return {
+        success: true, account: {
+            id: accountDb.id,
+            name: accountDb.name,
+            email: accountDb.email,
+            phone: accountDb.phone,
+            document: accountDb.document,
+            studentIds: accountDb.studentIds,
+            profile: accountDb.profile,
+        }
+    };
 };
 exports.default = loginAccount;
