@@ -28,9 +28,9 @@ app.post('/upsertAccount', async (req, res) => {
 app.use((0, cors_1.default)({
     origin: '*'
 }));
-Promise.resolve(mongoose_1.default.connect(URI).catch(() => {
+mongoose_1.default.connect(URI).catch(() => {
     console.log('Failed to connect into mongo by URI');
-}));
+});
 app.use((req, res) => {
     res.status(404);
 });
