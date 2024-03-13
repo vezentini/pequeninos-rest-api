@@ -32,9 +32,9 @@ app.use(cors({
   origin: '*'
 }))
 
-Promise.resolve(mongoose.connect(URI).catch(() => {
+mongoose.connect(URI).catch(() => {
   console.log('Failed to connect into mongo by URI');
-}))
+})
 
 app.use((req, res) => {
   res.status(404)
