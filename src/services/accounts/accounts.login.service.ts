@@ -1,5 +1,5 @@
-import { AccountLoginInput } from '../entities/inputs';
-import { Accounts, IAccountLogin } from '../entities/interfaces';
+import { AccountLoginInput } from '../../entities/inputs';
+import { Accounts, IAccountLogin } from '../../entities/interfaces';
 
 const loginAccount = async (filter: AccountLoginInput): Promise<IAccountLogin> => {
   const { email, password } = filter;
@@ -8,7 +8,7 @@ const loginAccount = async (filter: AccountLoginInput): Promise<IAccountLogin> =
   const accountDb = await Accounts.findOne({ email, password });
 
   if (accountDb === null) return { success: false, account: null }
-  return { success: true, account: accountDb };
+  return { success: true, account: { ...accountDb } };
 }
 
 export default loginAccount;

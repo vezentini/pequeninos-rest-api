@@ -6,7 +6,6 @@ export interface IAccount {
   id: string;
   name: string;
   email: string;
-  password: string;
   phone: string;
   document: string;
   studentIds: string[];
