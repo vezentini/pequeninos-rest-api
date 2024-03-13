@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });
 app.get('/loginAccount', async (req, res) => {
-    const loginResult = await (0, accounts_login_service_1.default)(req.params);
+    const loginResult = await (0, accounts_login_service_1.default)(req.body);
     res.send(loginResult);
 });
 app.post('/upsertAccount', async (req, res) => {
