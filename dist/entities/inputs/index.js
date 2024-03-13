@@ -17,3 +17,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./account.input"), exports);
 __exportStar(require("./account.login.input"), exports);
 __exportStar(require("./accounts.filter.input"), exports);
+__exportStar(require("./class.input"), exports);

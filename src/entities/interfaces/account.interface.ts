@@ -41,6 +41,10 @@ const schema = new Schema(
       type: String,
       required: true,
     },
+    document: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
