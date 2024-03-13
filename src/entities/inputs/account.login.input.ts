@@ -1,4 +1,4 @@
 export class AccountLoginInput {
-  readonly email?: string;
-  readonly password?: string;
+  readonly email: string | undefined;
+  readonly password: string | undefined;
 }
