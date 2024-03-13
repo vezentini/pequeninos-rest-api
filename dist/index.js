@@ -5,11 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const accounts_login_service_1 = __importDefault(require("./services/accounts/accounts.login.service"));
-const accounts_upsert_service_1 = __importDefault(require("./services/accounts/accounts.upsert.service"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const multer_1 = __importDefault(require("multer"));
-const ramda_1 = require("ramda");
 const account_route_1 = __importDefault(require("./routes/account.route"));
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
@@ -20,25 +16,6 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/accounts', account_route_1.default);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
-});
-const storage = multer_1.default.memoryStorage();
-const size = 150 * 1024 * 1024;
-const upload = (0, multer_1.default)({
-    storage,
-    limits: {
-        fileSize: size,
-        fieldSize: size,
-    },
-});
-app.get('/loginAccount', upload.single('file'), async (req, res) => {
-    const email = (0, ramda_1.pathOr)('', ['email'], req.query);
-    const password = (0, ramda_1.pathOr)('', ['password'], req.query);
-    const loginResult = await (0, accounts_login_service_1.default)({ email, password });
-    res.send(loginResult);
-});
-app.post('/upsertAccount', async (req, res) => {
-    const upsertResult = await (0, accounts_upsert_service_1.default)(req.body);
-    res.send(upsertResult);
 });
 app.use((0, cors_1.default)({
     origin: '*'
