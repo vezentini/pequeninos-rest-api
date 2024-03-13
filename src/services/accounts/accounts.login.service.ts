@@ -8,7 +8,17 @@ const loginAccount = async (filter: AccountLoginInput): Promise<IAccountLogin> =
   const accountDb = await Accounts.findOne({ email, password });
 
   if (accountDb === null) return { success: false, account: null }
-  return { success: true, account: { ...accountDb } };
+  return {
+    success: true, account: {
+      id: accountDb.id,
+      name: accountDb.name,
+      email: accountDb.email,
+      phone: accountDb.phone,
+      document: accountDb.document,
+      studentIds: accountDb.studentIds,
+      profile: accountDb.profile,
+    }
+  };
 }
 
 export default loginAccount;

@@ -22,29 +22,6 @@ app.get('/', (req, res) => {
   res.send('Bem-vindo!')
 })
 
-const storage = multer.memoryStorage();
-
-const size = 150 * 1024 * 1024;
-const upload = multer({
-  storage,
-  limits: {
-    fileSize: size,
-    fieldSize: size,
-  },
-});
-
-app.get('/loginAccount', upload.single('file'), async (req: Request, res: Response) => {
-  const email = pathOr('', ['email'], req.query);
-  const password = pathOr('', ['password'], req.query);
-  const loginResult = await loginAccount({ email, password })
-  res.send(loginResult)
-});
-
-app.post('/upsertAccount', async (req: Request, res: Response) => {
-  const upsertResult = await upsertAccount(req.body)
-  res.send(upsertResult)
-})
-
 app.use(cors({
   origin: '*'
 }))
