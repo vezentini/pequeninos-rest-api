@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
-import { AccountInput } from '../entities/inputs';
-import { Accounts } from '../entities/interfaces';
-import { ProfileTypes } from '../entities/enums';
+import { AccountInput } from '../../entities/inputs';
+import { Accounts } from '../../entities/interfaces';
+import { ProfileTypes } from '../../entities/enums';
 
 const upsertAccount = async (input: AccountInput): Promise<Boolean> => {
   console.log('chegou no lugar');
@@ -16,13 +16,11 @@ const upsertAccount = async (input: AccountInput): Promise<Boolean> => {
 
   console.log(profile);
 
-  const result = await Accounts.updateOne(
+  await Accounts.updateOne(
     { id: upsertObject.id },
     upsertObject,
     { upsert: true },
   );
-
-  console.log(result)
 
   return true;
 }
