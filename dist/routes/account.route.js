@@ -26,7 +26,7 @@ accountsRouter.get('/login', upload.single('file'), async (req, res) => {
     res.send(loginResult);
 });
 accountsRouter.get('/find', upload.single('file'), async (req, res) => {
-    const id = (0, ramda_1.pathOr)('', ['id'], req.query);
+    const id = (0, ramda_1.pathOr)(undefined, ['id'], req.query);
     const loginResult = await (0, accounts_1.findAccounts)({ id });
     res.send(loginResult);
 });

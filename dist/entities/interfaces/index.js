@@ -23,3 +23,7 @@ __exportStar(require("./student.interface"), exports);
 __exportStar(require("./students.list.interface"), exports);
 __exportStar(require("./notification.interface"), exports);
 __exportStar(require("./notifications.list.interface"), exports);
+__exportStar(require("./summary.interface"), exports);
+__exportStar(require("./summary.list.interface"), exports);
+__exportStar(require("./classes.selection.list.interface"), exports);
+__exportStar(require("./students.selection.list.interface"), exports);

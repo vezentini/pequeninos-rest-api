@@ -1,3 +1,5 @@
-import upsertClass from './classes.upsert.service';
+import upsertClass from './upsert.classes.service';
 import findClasses from './find.classes.service';
-export { findClasses, upsertClass };
+import findSelectionClasses from './find.selection.classes.service';
+
+export { findClasses, upsertClass, findSelectionClasses };

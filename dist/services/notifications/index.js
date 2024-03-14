@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.upsertNotification = exports.findNotifications = void 0;
 const find_notifications_service_1 = __importDefault(require("./find.notifications.service"));
 exports.findNotifications = find_notifications_service_1.default;
-const notifications_upsert_service_1 = __importDefault(require("./notifications.upsert.service"));
-exports.upsertNotification = notifications_upsert_service_1.default;
+const upsert_notifications_service_1 = __importDefault(require("./upsert.notifications.service"));
+exports.upsertNotification = upsert_notifications_service_1.default;
