@@ -19,8 +19,12 @@ const upload = (0, multer_1.default)({
     },
 });
 studentsRouter.get('/find', upload.single('file'), async (req, res) => {
-    const loginResult = await (0, students_1.findStudents)();
-    res.send(loginResult);
+    const studentsResult = await (0, students_1.findStudents)();
+    res.send(studentsResult);
+});
+studentsRouter.get('/findSelection', upload.single('file'), async (req, res) => {
+    const studentsResult = await (0, students_1.findSelectionStudentes)();
+    res.send(studentsResult);
 });
 studentsRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, students_1.upsertStudent)(req.body);

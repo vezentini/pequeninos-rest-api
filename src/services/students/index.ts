@@ -1,4 +1,5 @@
 import findStudents from './find.students.service';
-import upsertStudent from './students.upsert.service';
+import upsertStudent from './upsert.students.service';
+import findSelectionStudentes from './find.selection.students.service';
 
-export { findStudents, upsertStudent };
+export { findStudents, upsertStudent, findSelectionStudentes };

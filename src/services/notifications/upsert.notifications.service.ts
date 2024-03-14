@@ -1,11 +1,11 @@
-import { v4 as uuid } from 'uuid';
 import { NotificationInput } from '../../entities/inputs';
 import { Notifications } from '../../entities/interfaces';
+import { generateNumberId } from '../../helper';
 
 const upsertNotification = async (input: NotificationInput): Promise<Boolean> => {
   let upsertObject = { ...input };
-  if (input.id === '') {
-    upsertObject.id = uuid();
+  if (input.id === null) {
+    upsertObject.id = generateNumberId();
   }
 
   await Notifications.updateOne(

@@ -2,19 +2,19 @@ import { Document, Schema, model } from 'mongoose';
 
 
 export interface IClass {
-  id: string;
+  id: number;
   name: string;
 }
 
 export default interface IClassModal extends Document, IClass {
-  id: string;
+  id: number;
   name: string;
 }
 
 const schema = new Schema(
   {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     name: {

@@ -3,7 +3,7 @@ import { ProfileTypes } from '../enums';
 
 
 export interface IAccount {
-  id: string;
+  id: number;
   name: string;
   email: string;
   phone: string;
@@ -13,7 +13,7 @@ export interface IAccount {
 }
 
 export default interface IAccountModal extends Document, IAccount {
-  id: string;
+  id: number;
   name: string;
   email: string;
   password: string;
@@ -26,7 +26,7 @@ export default interface IAccountModal extends Document, IAccount {
 const schema = new Schema(
   {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     name: {

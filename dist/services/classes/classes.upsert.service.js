@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const uuid_1 = require("uuid");
 const interfaces_1 = require("../../entities/interfaces");
+const helper_1 = require("../../helper");
 const upsertClass = async (input) => {
     let upsertObject = Object.assign({}, input);
-    if (input.id === '') {
-        upsertObject.id = (0, uuid_1.v4)();
+    if (input.id === null) {
+        upsertObject.id = (0, helper_1.generateNumberId)();
     }
     await interfaces_1.Classes.updateOne({ id: upsertObject.id }, upsertObject, { upsert: true });
     return true;

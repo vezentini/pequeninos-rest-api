@@ -3,14 +3,14 @@ import { GenderTypes } from '../enums';
 
 
 export interface IStudent {
-  id: string;
+  id: number;
   name: string;
   classId: string;
   gender: GenderTypes;
 }
 
 export default interface IStudentModal extends Document, IStudent {
-  id: string;
+  id: number;
   name: string;
   classId: string;
   gender: GenderTypes;
@@ -19,7 +19,7 @@ export default interface IStudentModal extends Document, IStudent {
 const schema = new Schema(
   {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     name: {

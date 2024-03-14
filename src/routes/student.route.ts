@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
-import { findStudents, upsertStudent } from '../services/students';
+import { findSelectionStudentes, findStudents, upsertStudent } from '../services/students';
 
 
 const studentsRouter = express.Router();
@@ -20,8 +20,13 @@ const upload = multer({
 });
 
 studentsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
-  const loginResult = await findStudents()
-  res.send(loginResult)
+  const studentsResult = await findStudents()
+  res.send(studentsResult)
+});
+
+studentsRouter.get('/findSelection', upload.single('file'), async (req: Request, res: Response) => {
+  const studentsResult = await findSelectionStudentes()
+  res.send(studentsResult)
 });
 
 studentsRouter.post('/upsert', async (req: Request, res: Response) => {
