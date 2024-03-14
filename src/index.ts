@@ -1,7 +1,7 @@
 import express, { } from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import { accountsRouter, classRouter } from './routes'
+import { accountsRouter, classRouter, studentRouter } from './routes'
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/accounts', accountsRouter)
 app.use('/classes', classRouter)
+app.use('/students', studentRouter)
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo!')

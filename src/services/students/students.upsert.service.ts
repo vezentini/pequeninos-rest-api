@@ -1,14 +1,14 @@
 import { v4 as uuid } from 'uuid';
 import { StudentInput } from '../../entities/inputs';
-import { Classes } from '../../entities/interfaces';
+import { Students } from '../../entities/interfaces';
 
-const upsertClass = async (input: StudentInput): Promise<Boolean> => {
+const upsertStudent = async (input: StudentInput): Promise<Boolean> => {
   let upsertObject = { ...input };
   if (input.id === '') {
     upsertObject.id = uuid();
   }
 
-  await Classes.updateOne(
+  await Students.updateOne(
     { id: upsertObject.id },
     upsertObject,
     { upsert: true },
@@ -17,4 +17,4 @@ const upsertClass = async (input: StudentInput): Promise<Boolean> => {
   return true;
 }
 
-export default upsertClass;
+export default upsertStudent;

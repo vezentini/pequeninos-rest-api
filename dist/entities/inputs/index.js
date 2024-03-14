@@ -18,3 +18,5 @@ __exportStar(require("./account.input"), exports);
 __exportStar(require("./account.login.input"), exports);
 __exportStar(require("./accounts.filter.input"), exports);
 __exportStar(require("./class.input"), exports);
+__exportStar(require("./student.input"), exports);
+__exportStar(require("./notification.input"), exports);

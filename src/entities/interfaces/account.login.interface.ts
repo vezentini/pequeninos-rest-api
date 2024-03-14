@@ -1,6 +1,6 @@
-import { AccountType } from '../dtos';
+import { IAccount } from "./account.interface";
 
 export interface IAccountLogin {
   readonly success: boolean;
-  readonly account: AccountType | null
+  readonly account: IAccount | null
 }
