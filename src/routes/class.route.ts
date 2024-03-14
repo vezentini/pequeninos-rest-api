@@ -4,10 +4,10 @@ import { pathOr } from 'ramda';
 import { findClasses, upsertClass } from '../services/classes';
 
 
-const classRouter = express.Router();
+const classesRouter = express.Router();
 
-classRouter.use(express.json());
-classRouter.use(express.urlencoded({ extended: true }));
+classesRouter.use(express.json());
+classesRouter.use(express.urlencoded({ extended: true }));
 
 const storage = multer.memoryStorage();
 
@@ -20,16 +20,16 @@ const upload = multer({
   },
 });
 
-classRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
+classesRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
   const loginResult = await findClasses()
   res.send(loginResult)
 });
 
-classRouter.post('/upsert', async (req: Request, res: Response) => {
+classesRouter.post('/upsert', async (req: Request, res: Response) => {
   const upsertResult = await upsertClass(req.body)
   res.send(upsertResult)
 })
 
-export default classRouter;
+export default classesRouter;
 
 

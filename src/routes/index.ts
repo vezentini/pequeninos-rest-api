@@ -1,6 +1,7 @@
 import accountsRouter from "./account.route"
-import classRouter from './class.route';
-import studentRouter from './student.route';
+import classesRouter from './class.route';
+import studentsRouter from './student.route';
+import notificationsRouter from './notifications.route';
 
 
-export { accountsRouter, classRouter, studentRouter }
+export { accountsRouter, classesRouter, studentsRouter, notificationsRouter }

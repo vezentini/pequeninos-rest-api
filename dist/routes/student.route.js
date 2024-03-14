@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const multer_1 = __importDefault(require("multer"));
 const students_1 = require("../services/students");
-const studentRouter = express_1.default.Router();
-studentRouter.use(express_1.default.json());
-studentRouter.use(express_1.default.urlencoded({ extended: true }));
+const studentsRouter = express_1.default.Router();
+studentsRouter.use(express_1.default.json());
+studentsRouter.use(express_1.default.urlencoded({ extended: true }));
 const storage = multer_1.default.memoryStorage();
 const size = 150 * 1024 * 1024;
 const upload = (0, multer_1.default)({
@@ -18,12 +18,12 @@ const upload = (0, multer_1.default)({
         fieldSize: size,
     },
 });
-studentRouter.get('/find', upload.single('file'), async (req, res) => {
+studentsRouter.get('/find', upload.single('file'), async (req, res) => {
     const loginResult = await (0, students_1.findStudents)();
     res.send(loginResult);
 });
-studentRouter.post('/upsert', async (req, res) => {
+studentsRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, students_1.upsertStudent)(req.body);
     res.send(upsertResult);
 });
-exports.default = studentRouter;
+exports.default = studentsRouter;

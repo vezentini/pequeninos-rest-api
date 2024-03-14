@@ -1,7 +1,7 @@
 import express, { } from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-import { accountsRouter, classRouter, studentRouter } from './routes'
+import { accountsRouter, classesRouter, notificationsRouter, studentsRouter } from './routes'
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
@@ -9,12 +9,13 @@ const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mong
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use('/accounts', accountsRouter)
-app.use('/classes', classRouter)
-app.use('/students', studentRouter)
+app.use('/classes', classesRouter)
+app.use('/students', studentsRouter)
+app.use('/notifications', notificationsRouter)
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo!')
