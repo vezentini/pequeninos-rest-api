@@ -3,10 +3,10 @@ import multer from 'multer';
 import { findStudents, upsertStudent } from '../services/students';
 
 
-const studentRouter = express.Router();
+const studentsRouter = express.Router();
 
-studentRouter.use(express.json());
-studentRouter.use(express.urlencoded({ extended: true }));
+studentsRouter.use(express.json());
+studentsRouter.use(express.urlencoded({ extended: true }));
 
 const storage = multer.memoryStorage();
 
@@ -19,16 +19,16 @@ const upload = multer({
   },
 });
 
-studentRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
+studentsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
   const loginResult = await findStudents()
   res.send(loginResult)
 });
 
-studentRouter.post('/upsert', async (req: Request, res: Response) => {
+studentsRouter.post('/upsert', async (req: Request, res: Response) => {
   const upsertResult = await upsertStudent(req.body)
   res.send(upsertResult)
 })
 
-export default studentRouter;
+export default studentsRouter;
 
 

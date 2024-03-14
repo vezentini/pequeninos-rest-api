@@ -11,11 +11,12 @@ const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
 const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const app = (0, express_1.default)();
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: true }));
+app.use(express_1.default.json({ limit: '50mb' }));
+app.use(express_1.default.urlencoded({ limit: '50mb', extended: true }));
 app.use('/accounts', routes_1.accountsRouter);
-app.use('/classes', routes_1.classRouter);
-app.use('/students', routes_1.studentRouter);
+app.use('/classes', routes_1.classesRouter);
+app.use('/students', routes_1.studentsRouter);
+app.use('/notifications', routes_1.notificationsRouter);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });
