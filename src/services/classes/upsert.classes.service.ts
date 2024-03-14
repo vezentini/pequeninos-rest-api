@@ -1,8 +1,8 @@
-import { StudentInput } from '../../entities/inputs';
+import { ClassInput } from '../../entities/inputs';
 import { Classes } from '../../entities/interfaces';
 import { generateNumberId } from '../../helper';
 
-const upsertClass = async (input: StudentInput): Promise<Boolean> => {
+const upsertClass = async (input: ClassInput): Promise<Boolean> => {
   let upsertObject = { ...input };
   if (input.id === null) {
     upsertObject.id = generateNumberId();
