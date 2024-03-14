@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StudentInput = void 0;
-class StudentInput {
+exports.SummaryInput = void 0;
+class SummaryInput {
 }
-exports.StudentInput = StudentInput;
+exports.SummaryInput = SummaryInput;

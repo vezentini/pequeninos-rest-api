@@ -4,7 +4,7 @@ exports.Students = void 0;
 const mongoose_1 = require("mongoose");
 const schema = new mongoose_1.Schema({
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     name: {

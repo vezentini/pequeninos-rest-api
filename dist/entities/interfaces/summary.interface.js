@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Summarys = void 0;
+exports.Summaries = void 0;
 const mongoose_1 = require("mongoose");
 const schema = new mongoose_1.Schema({
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     date: {
@@ -54,4 +54,4 @@ const schema = new mongoose_1.Schema({
 }, {
     timestamps: true,
 });
-exports.Summarys = (0, mongoose_1.model)('accounts', schema);
+exports.Summaries = (0, mongoose_1.model)('summaries', schema);
