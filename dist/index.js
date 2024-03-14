@@ -15,6 +15,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/accounts', routes_1.accountsRouter);
 app.use('/classes', routes_1.classRouter);
+app.use('/students', routes_1.studentRouter);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });

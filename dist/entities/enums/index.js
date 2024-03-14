@@ -15,7 +15,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./communicated.types"), exports);
-__exportStar(require("./photos.types"), exports);
 __exportStar(require("./snack.consumn.types"), exports);
 __exportStar(require("./profile.types"), exports);
 __exportStar(require("./gender.types"), exports);

@@ -19,3 +19,7 @@ __exportStar(require("./account.login.interface"), exports);
 __exportStar(require("./accounts.list.interface"), exports);
 __exportStar(require("./classes.list.interface"), exports);
 __exportStar(require("./class.interface"), exports);
+__exportStar(require("./student.interface"), exports);
+__exportStar(require("./students.list.interface"), exports);
+__exportStar(require("./notification.interface"), exports);
+__exportStar(require("./notifications.list.interface"), exports);
