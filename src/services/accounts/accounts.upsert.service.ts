@@ -7,9 +7,8 @@ import { is } from 'ramda';
 const upsertAccount = async (input: AccountInput): Promise<Boolean> => {
   let upsertObject = { ...input, profile: ProfileTypes[input.profile as keyof typeof ProfileTypes] };
 
-  if (!is(Number, upsertObject.id)) {
+  if (upsertObject.id === 0) {
     upsertObject.id = generateNumberId();
-    console.log('gerou');
   }
 
   await Accounts.updateOne(

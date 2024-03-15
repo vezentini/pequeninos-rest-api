@@ -1,4 +1,4 @@
 export class ClassInput {
-  readonly id?: number | null;
+  readonly id?: number;
   readonly name?: string;
 }

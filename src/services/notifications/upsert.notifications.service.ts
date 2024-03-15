@@ -4,7 +4,7 @@ import { generateNumberId } from '../../helper';
 
 const upsertNotification = async (input: NotificationInput): Promise<Boolean> => {
   let upsertObject = { ...input };
-  if (input.id === null) {
+  if (input.id === 0) {
     upsertObject.id = generateNumberId();
   }
 

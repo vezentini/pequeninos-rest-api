@@ -1,7 +1,7 @@
 import { ProfileTypes } from '../enums';
 
 export class AccountInput {
-  readonly id?: number | string;
+  readonly id?: number;
   readonly name?: string;
   readonly email?: string;
   readonly password?: string;

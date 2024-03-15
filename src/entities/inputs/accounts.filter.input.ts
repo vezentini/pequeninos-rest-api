@@ -1,3 +1,3 @@
 export class AccountsFilterInput {
-  readonly id?: number | null;
+  readonly id?: number;
 }
