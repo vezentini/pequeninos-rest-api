@@ -5,7 +5,7 @@ import { generateNumberId } from "../../helper";
 
 const upsertSummary = async (input: SummaryInput): Promise<Boolean> => {
   let upsertObject = { ...input };
-  if (input.id === null) {
+  if (input.id === 0) {
     upsertObject.id = generateNumberId();
   }
 
