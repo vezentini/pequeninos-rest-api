@@ -3,7 +3,7 @@ import { ProfileTypes, SnackConsumnTypes } from '../enums';
 
 
 export interface ISummary {
-  id: number;
+  id: string;
   date: string;
   studentId: string;
   mornningSnack: string;
@@ -18,7 +18,7 @@ export interface ISummary {
 }
 
 export default interface ISummaryModal extends Document, ISummary {
-  id: number;
+  id: string;
   date: string;
   studentId: string;
   mornningSnack: string;
@@ -35,7 +35,7 @@ export default interface ISummaryModal extends Document, ISummary {
 const schema = new Schema(
   {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     date: {

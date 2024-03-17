@@ -24,12 +24,14 @@ const upload = multer({
 summariesRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
   const accountId = pathOr(0, ['accountId'], req.query) as number;
   const profile = pathOr(ProfileTypes.ADMIN, ['profile'], req.query);
+  const date = pathOr('', ['date'], req.query);
 
-  const studentsResult = await findSummaries({ accountId, profile })
+  const studentsResult = await findSummaries({ accountId, profile, date })
   res.send(studentsResult)
 });
 
 summariesRouter.post('/upsert', async (req: Request, res: Response) => {
+  console.log("entrou");
   const upsertResult = await upsertSummary(req.body)
   res.send(upsertResult)
 })

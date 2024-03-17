@@ -1,12 +1,12 @@
 import { SummaryInput } from "../../entities/inputs/summary.input";
 import { Summaries } from "../../entities/interfaces";
-import { generateNumberId } from "../../helper";
+import { v4 as uuid } from 'uuid';
 
 
 const upsertSummary = async (input: SummaryInput): Promise<Boolean> => {
   let upsertObject = { ...input };
-  if (input.id === 0) {
-    upsertObject.id = generateNumberId();
+  if (input.id === "") {
+    upsertObject.id = uuid();
   }
 
   await Summaries.updateOne(

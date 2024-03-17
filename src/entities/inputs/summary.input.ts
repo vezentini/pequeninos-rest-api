@@ -1,7 +1,7 @@
 import { SnackConsumnTypes } from '../enums';
 
 export class SummaryInput {
-  readonly id?: number;
+  readonly id?: string;
   readonly date?: string;
   readonly studentid?: number;
   readonly mornningSnack?: string;

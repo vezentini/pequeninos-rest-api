@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const multer_1 = __importDefault(require("multer"));
 const notifications_1 = require("../services/notifications");
-const ramda_1 = require("ramda");
-const enums_1 = require("../entities/enums");
 const notificationsRouter = express_1.default.Router();
 notificationsRouter.use(express_1.default.json());
 notificationsRouter.use(express_1.default.urlencoded({ extended: true }));
@@ -21,9 +19,7 @@ const upload = (0, multer_1.default)({
     },
 });
 notificationsRouter.get('/find', upload.single('file'), async (req, res) => {
-    const accountId = (0, ramda_1.pathOr)(0, ['accountId'], req.query);
-    const profile = (0, ramda_1.pathOr)(enums_1.ProfileTypes.ADMIN, ['profile'], req.query);
-    const loginResult = await (0, notifications_1.findNotifications)({ accountId, profile });
+    const loginResult = await (0, notifications_1.findNotifications)();
     res.send(loginResult);
 });
 notificationsRouter.post('/upsert', async (req, res) => {

@@ -1,3 +1,4 @@
+import { isEmpty } from "ramda";
 import { ProfileTypes } from "../../entities/enums";
 import { CommonFilterInput } from "../../entities/inputs";
 import { ISummariesList, Summaries } from "../../entities/interfaces";
@@ -7,10 +8,14 @@ import { mapFilterStudents } from "../accounts";
 
 const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> => {
   let filter = {};
-  if (input.profile === ProfileTypes.PARENT) {
-    filter = await mapFilterStudents(input)
-  }
 
+  if (input.profile === ProfileTypes.PARENT) {
+    const listStudentsIds = await mapFilterStudents(input)
+
+    if (isEmpty(listStudentsIds)) return { summaries: [] }
+
+    filter = { studentId: { $in: listStudentsIds } }
+  }
   const summariesDb = await Summaries.find({ ...filter });
 
   const summaries = summariesDb.map((summary: ISummary) => {

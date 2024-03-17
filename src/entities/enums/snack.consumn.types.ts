@@ -1,5 +1,5 @@
 export enum SnackConsumnTypes {
-  ALL = 'ALL',
-  NONE = 'NONE',
-  HALF = 'HALF',
+  TUDO = 'TUDO',
+  METADE = 'METADE',
+  NADA = 'NADA',
 }
