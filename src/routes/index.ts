@@ -1,6 +1,6 @@
-import accountsRouter from "./account.route"
-import classesRouter from './class.route';
-import studentsRouter from './student.route';
+import accountsRouter from "./accounts.route"
+import classesRouter from './classes.route';
+import studentsRouter from './students.route';
 import notificationsRouter from './notifications.route';
 
 

@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const routes_1 = require("./routes");
+const summaries_route_1 = __importDefault(require("./routes/summaries.route"));
 const PORT = process.env.PORT || 4000;
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
 const URI = "mongodb+srv://pequeninos-app:q8qDSmnSRxKkRWhl@cluster0.hhhy8qo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -17,6 +18,7 @@ app.use('/accounts', routes_1.accountsRouter);
 app.use('/classes', routes_1.classesRouter);
 app.use('/students', routes_1.studentsRouter);
 app.use('/notifications', routes_1.notificationsRouter);
+app.use('/sumamries', summaries_route_1.default);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });

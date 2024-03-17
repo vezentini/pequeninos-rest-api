@@ -1,11 +1,9 @@
-import { AccountsFilterInput } from '../../entities/inputs';
 import { Accounts, IAccountsList } from '../../entities/interfaces';
 import IAccountModal from '../../entities/interfaces/account.interface';
 
-const findAccounts = async (input: Partial<AccountsFilterInput>): Promise<IAccountsList> => {
-  let filter = input?.id === 0 ? {} : { id: input.id }
+const findAccounts = async (): Promise<IAccountsList> => {
 
-  const accountDb = await Accounts.find(filter);
+  const accountDb = await Accounts.find();
 
   const accounts = accountDb.map((account: IAccountModal) => ({
     id: account.id,

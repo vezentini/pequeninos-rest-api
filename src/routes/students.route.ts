@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
 import { findSelectionStudentes, findStudents, upsertStudent } from '../services/students';
+import { pathOr } from 'ramda';
+import { ProfileTypes } from '../entities/enums';
 
 
 const studentsRouter = express.Router();
@@ -20,7 +22,10 @@ const upload = multer({
 });
 
 studentsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
-  const studentsResult = await findStudents()
+  const accountId = pathOr(0, ['accountId'], req.query) as number;
+  const profile = pathOr(ProfileTypes.ADMIN, ['profile'], req.query);
+
+  const studentsResult = await findStudents({ accountId, profile })
   res.send(studentsResult)
 });
 
