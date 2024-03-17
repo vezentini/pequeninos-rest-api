@@ -1,6 +1,12 @@
 import { Document, Schema, model } from 'mongoose';
 import { ProfileTypes } from '../enums';
 
+export interface IAccountLoginResult {
+  id: number;
+  name: string;
+  profile: ProfileTypes;
+  email: string;
+}
 
 export interface IAccount {
   id: number;

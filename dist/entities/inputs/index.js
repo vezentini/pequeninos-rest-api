@@ -16,7 +16,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./account.input"), exports);
 __exportStar(require("./account.login.input"), exports);
-__exportStar(require("./accounts.filter.input"), exports);
+__exportStar(require("./common.filter.input"), exports);
 __exportStar(require("./class.input"), exports);
 __exportStar(require("./student.input"), exports);
 __exportStar(require("./notification.input"), exports);

@@ -29,8 +29,7 @@ accountsRouter.get('/login', upload.single('file'), async (req: Request, res: Re
 
 
 accountsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
-  const id = pathOr(0, ['id'], req.query);
-  const loginResult = await findAccounts({ id })
+  const loginResult = await findAccounts()
   res.send(loginResult)
 });
 

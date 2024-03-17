@@ -2,6 +2,7 @@ import express, { } from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import { accountsRouter, classesRouter, notificationsRouter, studentsRouter } from './routes'
+import summariesRouter from './routes/summaries.route'
 
 const PORT = process.env.PORT || 4000
 const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
@@ -16,6 +17,7 @@ app.use('/accounts', accountsRouter)
 app.use('/classes', classesRouter)
 app.use('/students', studentsRouter)
 app.use('/notifications', notificationsRouter)
+app.use('/sumamries', summariesRouter)
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo!')

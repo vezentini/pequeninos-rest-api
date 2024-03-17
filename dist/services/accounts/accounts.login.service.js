@@ -13,9 +13,6 @@ const loginAccount = async (filter) => {
             id: accountDb.id,
             name: accountDb.name,
             email: accountDb.email,
-            phone: accountDb.phone,
-            document: accountDb.document,
-            studentIds: accountDb.studentIds,
             profile: accountDb.profile,
         }
     };

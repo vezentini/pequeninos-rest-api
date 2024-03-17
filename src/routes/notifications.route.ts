@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
 import { findNotifications, upsertNotification } from '../services/notifications';
+import { pathOr } from 'ramda';
+import { ProfileTypes } from '../entities/enums';
 
 
 const notificationsRouter = express.Router();
@@ -20,7 +22,10 @@ const upload = multer({
 });
 
 notificationsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
-  const loginResult = await findNotifications()
+  const accountId = pathOr(0, ['accountId'], req.query) as number;
+  const profile = pathOr(ProfileTypes.ADMIN, ['profile'], req.query);
+
+  const loginResult = await findNotifications({ accountId, profile })
   res.send(loginResult)
 });
 

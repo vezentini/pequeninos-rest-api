@@ -1,9 +1,17 @@
+import { ProfileTypes } from "../../entities/enums";
+import { CommonFilterInput } from "../../entities/inputs";
 import { ISummariesList, Summaries } from "../../entities/interfaces";
 import { ISummary } from "../../entities/interfaces/summary.interface";
+import { mapFilterStudents } from "../accounts";
 
 
-const findSummaries = async (): Promise<ISummariesList> => {
-  const summariesDb = await Summaries.find();
+const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> => {
+  let filter = {};
+  if (input.profile === ProfileTypes.PARENT) {
+    filter = await mapFilterStudents(input)
+  }
+
+  const summariesDb = await Summaries.find({ ...filter });
 
   const summaries = summariesDb.map((summary: ISummary) => {
     return ({
