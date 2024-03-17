@@ -18,7 +18,7 @@ app.use('/accounts', routes_1.accountsRouter);
 app.use('/classes', routes_1.classesRouter);
 app.use('/students', routes_1.studentsRouter);
 app.use('/notifications', routes_1.notificationsRouter);
-app.use('/sumamries', summaries_route_1.default);
+app.use('/summaries', summaries_route_1.default);
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });
