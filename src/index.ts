@@ -17,7 +17,7 @@ app.use('/accounts', accountsRouter)
 app.use('/classes', classesRouter)
 app.use('/students', studentsRouter)
 app.use('/notifications', notificationsRouter)
-app.use('/sumamries', summariesRouter)
+app.use('/summaries', summariesRouter)
 
 app.get('/', (req, res) => {
   res.send('Bem-vindo!')

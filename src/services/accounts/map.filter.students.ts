@@ -1,12 +1,14 @@
+import { isEmpty } from "ramda";
 import { CommonFilterInput } from "../../entities/inputs"
 import { Accounts, IAccount } from "../../entities/interfaces";
 
-export const mapFilterStudents = async (filter: CommonFilterInput) => {
+export const mapFilterStudents = async (filter: CommonFilterInput, mapId: boolean = false) => {
   const accountsDb = await Accounts.findOne({ id: filter.accountId }) as IAccount;
 
-  const listStudents = accountsDb.studentIds.map((student: string) => student.split('-')[0].trim())
+  if (isEmpty(accountsDb.studentIds)) return [];
 
-  return listStudents
+  return mapId === true ? accountsDb.studentIds.map((student: string) => Number(student.split('-')[0].trim())) :
+    accountsDb.studentIds;
 }
 
 export default mapFilterStudents;

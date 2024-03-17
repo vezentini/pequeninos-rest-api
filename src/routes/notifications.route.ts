@@ -22,10 +22,7 @@ const upload = multer({
 });
 
 notificationsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
-  const accountId = pathOr(0, ['accountId'], req.query) as number;
-  const profile = pathOr(ProfileTypes.ADMIN, ['profile'], req.query);
-
-  const loginResult = await findNotifications({ accountId, profile })
+  const loginResult = await findNotifications()
   res.send(loginResult)
 });
 
