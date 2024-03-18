@@ -12,7 +12,7 @@ const findSummaries = async (input) => {
             return { summaries: [] };
         filter = { studentId: { $in: listStudentsIds } };
     }
-    const summariesDb = await interfaces_1.Summaries.find(Object.assign({}, filter));
+    const summariesDb = await interfaces_1.Summaries.find(Object.assign(Object.assign({}, filter), { date: input.date }));
     const summaries = summariesDb.map((summary) => {
         return ({
             id: summary.id,
