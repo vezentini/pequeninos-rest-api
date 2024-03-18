@@ -1,4 +1,4 @@
-import { CommonFilterInput } from "../../entities/inputs";
+import { CommonFindFilterInput } from "../../entities/inputs";
 import { INotificationsList, Notifications } from "../../entities/interfaces";
 import INotificationModal from "../../entities/interfaces/notification.interface";
 

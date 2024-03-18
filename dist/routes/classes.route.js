@@ -30,4 +30,8 @@ classesRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, classes_1.upsertClass)(req.body);
     res.send(upsertResult);
 });
+classesRouter.post('/delete', async (req, res) => {
+    const deleteResult = await (0, classes_1.deleteClass)(req.body);
+    res.send(deleteResult);
+});
 exports.default = classesRouter;

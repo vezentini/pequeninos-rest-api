@@ -1,12 +1,12 @@
 import { isEmpty } from "ramda";
 import { ProfileTypes } from "../../entities/enums";
-import { CommonFilterInput } from "../../entities/inputs";
+import { CommonFindFilterInput } from "../../entities/inputs";
 import { ISummariesList, Summaries } from "../../entities/interfaces";
 import { ISummary } from "../../entities/interfaces/summary.interface";
 import { mapFilterStudents } from "../accounts";
 
 
-const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> => {
+const findSummaries = async (input: CommonFindFilterInput): Promise<ISummariesList> => {
   let filter = {};
 
   if (input.profile === ProfileTypes.PARENT) {

@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
-import { findSelectionStudentes, findStudents, upsertStudent } from '../services/students';
+import { deleteStudent, findSelectionStudentes, findStudents, upsertStudent } from '../services/students';
 import { pathOr } from 'ramda';
 import { ProfileTypes } from '../entities/enums';
 
@@ -37,6 +37,11 @@ studentsRouter.get('/findSelection', upload.single('file'), async (req: Request,
 studentsRouter.post('/upsert', async (req: Request, res: Response) => {
   const upsertResult = await upsertStudent(req.body)
   res.send(upsertResult)
+})
+
+studentsRouter.post('/delete', async (req: Request, res: Response) => {
+  const deleteResult = await deleteStudent(req.body)
+  res.send(deleteResult)
 })
 
 export default studentsRouter;

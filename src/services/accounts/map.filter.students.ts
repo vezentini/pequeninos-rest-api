@@ -1,8 +1,8 @@
 import { isEmpty } from "ramda";
-import { CommonFilterInput } from "../../entities/inputs"
+import { CommonFindFilterInput } from "../../entities/inputs"
 import { Accounts, IAccount } from "../../entities/interfaces";
 
-export const mapFilterStudents = async (filter: CommonFilterInput, mapId: boolean = false) => {
+export const mapFilterStudents = async (filter: CommonFindFilterInput, mapId: boolean = false) => {
   const accountsDb = await Accounts.findOne({ id: filter.accountId }) as IAccount;
 
   if (isEmpty(accountsDb.studentIds)) return [];

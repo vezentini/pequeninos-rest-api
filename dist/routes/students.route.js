@@ -34,4 +34,8 @@ studentsRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, students_1.upsertStudent)(req.body);
     res.send(upsertResult);
 });
+studentsRouter.post('/delete', async (req, res) => {
+    const deleteResult = await (0, students_1.deleteStudent)(req.body);
+    res.send(deleteResult);
+});
 exports.default = studentsRouter;

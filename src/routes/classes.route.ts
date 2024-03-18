@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
-import { findClasses, findSelectionClasses, upsertClass } from '../services/classes';
+import { deleteClass, findClasses, findSelectionClasses, upsertClass } from '../services/classes';
 
 
 const classesRouter = express.Router();
@@ -32,6 +32,11 @@ classesRouter.get('/findSelection', upload.single('file'), async (req: Request, 
 classesRouter.post('/upsert', async (req: Request, res: Response) => {
   const upsertResult = await upsertClass(req.body)
   res.send(upsertResult)
+})
+
+classesRouter.post('/delete', async (req: Request, res: Response) => {
+  const deleteResult = await deleteClass(req.body)
+  res.send(deleteResult)
 })
 
 export default classesRouter;

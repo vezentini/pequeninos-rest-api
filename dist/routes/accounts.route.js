@@ -33,4 +33,8 @@ accountsRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, accounts_1.upsertAccount)(req.body);
     res.send(upsertResult);
 });
+accountsRouter.post('/delete', async (req, res) => {
+    const deleteResult = await (0, accounts_1.deleteAccount)(req.body);
+    res.send(deleteResult);
+});
 exports.default = accountsRouter;
