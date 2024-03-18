@@ -4,6 +4,6 @@ exports.SnackConsumnTypes = void 0;
 var SnackConsumnTypes;
 (function (SnackConsumnTypes) {
     SnackConsumnTypes["TUDO"] = "TUDO";
-    SnackConsumnTypes["METADE"] = "METADE";
+    SnackConsumnTypes["MEIO"] = "MEIO";
     SnackConsumnTypes["NADA"] = "NADA";
 })(SnackConsumnTypes || (exports.SnackConsumnTypes = SnackConsumnTypes = {}));
