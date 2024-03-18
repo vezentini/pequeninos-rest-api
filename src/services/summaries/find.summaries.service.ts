@@ -16,7 +16,8 @@ const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> 
 
     filter = { studentId: { $in: listStudentsIds } }
   }
-  const summariesDb = await Summaries.find({ ...filter });
+
+  const summariesDb = await Summaries.find({ ...filter, date: input.date });
 
   const summaries = summariesDb.map((summary: ISummary) => {
     return ({
