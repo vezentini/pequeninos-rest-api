@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
 import { pathOr } from 'ramda';
-import { findAccounts, loginAccount, upsertAccount } from '../services/accounts';
+import { findAccounts, findOneAccount, loginAccount, upsertAccount } from '../services/accounts';
 
 
 const accountsRouter = express.Router();
@@ -27,6 +27,11 @@ accountsRouter.get('/login', upload.single('file'), async (req: Request, res: Re
   res.send(loginResult)
 });
 
+accountsRouter.get('/findOne', upload.single('file'), async (req: Request, res: Response) => {
+  const id = pathOr(0, ['id'], req.query);
+  const loginResult = await findOneAccount(id)
+  res.send(loginResult)
+});
 
 accountsRouter.get('/find', upload.single('file'), async (req: Request, res: Response) => {
   const loginResult = await findAccounts()
