@@ -1,5 +1,6 @@
 import { AccountInput } from '../../entities/inputs';
 import { Accounts } from '../../entities/interfaces';
+import { ProfileTypes } from '../../entities/enums';
 import { generateNumberId } from '../../helper';
 
 const upsertAccount = async (input: AccountInput,): Promise<Boolean> => {
@@ -10,10 +11,13 @@ const upsertAccount = async (input: AccountInput,): Promise<Boolean> => {
   if (accountDb === null) {
     upsertObject.id = generateNumberId();
     upsertObject.password = input.document;
+    upsertObject.profile = ProfileTypes[input.profile as keyof typeof ProfileTypes]
   } else {
     upsertObject.password = accountDb.password;
     upsertObject.profile = accountDb.profile;
   }
+
+  console.log(upsertObject);
 
   await Accounts.updateOne(
     { id: upsertObject.id },
