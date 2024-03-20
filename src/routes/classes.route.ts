@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import multer from 'multer';
-import { findClasses, findSelectionClasses, upsertClass } from '../services/classes';
+import { findClasses, findSelectionClasses, upsertClass, deleteClass } from '../services/classes';
+import { pathOr } from 'ramda';
 
 
 const classesRouter = express.Router();
@@ -28,6 +29,13 @@ classesRouter.get('/findSelection', upload.single('file'), async (req: Request, 
   const studentsResult = await findSelectionClasses()
   res.send(studentsResult)
 });
+
+classesRouter.delete('/delete', upload.single('file'), async (req: Request, res: Response) => {
+  const id = pathOr(0, ['id'], req.query);
+  const loginResult = await deleteClass(id)
+  res.send(loginResult)
+});
+
 
 classesRouter.post('/upsert', async (req: Request, res: Response) => {
   const upsertResult = await upsertClass(req.body)

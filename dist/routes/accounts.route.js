@@ -30,6 +30,11 @@ accountsRouter.get('/findOne', upload.single('file'), async (req, res) => {
     const loginResult = await (0, accounts_1.findOneAccount)(id);
     res.send(loginResult);
 });
+accountsRouter.delete('/delete', upload.single('file'), async (req, res) => {
+    const id = (0, ramda_1.pathOr)(0, ['id'], req.query);
+    const loginResult = await (0, accounts_1.deleteAccount)(id);
+    res.send(loginResult);
+});
 accountsRouter.get('/find', upload.single('file'), async (req, res) => {
     const loginResult = await (0, accounts_1.findAccounts)();
     res.send(loginResult);

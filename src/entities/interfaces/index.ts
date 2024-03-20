@@ -11,3 +11,4 @@ export * from './summary.interface';
 export * from './summary.list.interface';
 export * from './classes.selection.list.interface'
 export * from './students.selection.list.interface'
+export * from './account.delete'

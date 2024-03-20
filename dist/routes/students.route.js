@@ -30,6 +30,11 @@ studentsRouter.get('/findSelection', upload.single('file'), async (req, res) => 
     const studentsResult = await (0, students_1.findSelectionStudentes)();
     res.send(studentsResult);
 });
+studentsRouter.delete('/delete', upload.single('file'), async (req, res) => {
+    const id = (0, ramda_1.pathOr)(0, ['id'], req.query);
+    const loginResult = await (0, students_1.deleteStudent)(id);
+    res.send(loginResult);
+});
 studentsRouter.post('/upsert', async (req, res) => {
     const upsertResult = await (0, students_1.upsertStudent)(req.body);
     res.send(upsertResult);
