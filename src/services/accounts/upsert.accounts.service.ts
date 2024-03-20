@@ -1,12 +1,11 @@
 import { AccountInput } from '../../entities/inputs';
 import { Accounts } from '../../entities/interfaces';
-import { ProfileTypes } from '../../entities/enums';
 import { generateNumberId } from '../../helper';
 
-const upsertAccount = async (input: AccountInput): Promise<Boolean> => {
+const upsertAccount = async (input: AccountInput,): Promise<Boolean> => {
   const accountDb = await Accounts.findOne({ id: input.id });
 
-  let upsertObject = { ...input, profile: ProfileTypes[input.profile as keyof typeof ProfileTypes] };
+  let upsertObject = { ...input };
 
   if (accountDb === null) {
     upsertObject.id = generateNumberId();

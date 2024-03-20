@@ -9,9 +9,7 @@ import { mapFilterStudents } from "../accounts";
 const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> => {
   let filter = {};
 
-  console.log(input.profile === ProfileTypes.PARENT);
-
-  if (input.profile === ProfileTypes.PARENT) {
+  if (input.profile === ProfileTypes.PARENTAL) {
 
     console.log('entrou no if');
     const listStudentsIds = await mapFilterStudents(input)

@@ -7,7 +7,7 @@ import { mapFilterStudents } from '../accounts';
 
 const findStudents = async (input: CommonFilterInput): Promise<IStudentsList> => {
   let filter = {};
-  if (input.profile === ProfileTypes.PARENT) {
+  if (input.profile === ProfileTypes.PARENTAL) {
     const listStudentsIds = await mapFilterStudents(input, true)
 
     if (isEmpty(listStudentsIds)) return { students: [] }
