@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateStudentAccounts = exports.deleteAccount = exports.findOneAccount = exports.mapFilterStudents = exports.loginAccount = exports.upsertAccount = exports.findAccounts = void 0;
-const accounts_upsert_service_1 = __importDefault(require("./accounts.upsert.service"));
-exports.upsertAccount = accounts_upsert_service_1.default;
+const upsert_accounts_service_1 = __importDefault(require("./upsert.accounts.service"));
+exports.upsertAccount = upsert_accounts_service_1.default;
 const find_accounts_service_1 = __importDefault(require("./find.accounts.service"));
 exports.findAccounts = find_accounts_service_1.default;
-const accounts_login_service_1 = __importDefault(require("./accounts.login.service"));
-exports.loginAccount = accounts_login_service_1.default;
+const login_accounts_service_1 = __importDefault(require("./login.accounts.service"));
+exports.loginAccount = login_accounts_service_1.default;
 const map_filter_students_1 = __importDefault(require("./map.filter.students"));
 exports.mapFilterStudents = map_filter_students_1.default;
 const find_one_account_service_1 = __importDefault(require("./find.one.account.service"));

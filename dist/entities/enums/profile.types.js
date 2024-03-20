@@ -8,11 +8,11 @@ const mongoose_1 = __importDefault(require("mongoose"));
 var ProfileTypes;
 (function (ProfileTypes) {
     ProfileTypes["ADMIN"] = "ADMIN";
-    ProfileTypes["PARENT"] = "PARENT";
+    ProfileTypes["PARENTAL"] = "PARENT";
 })(ProfileTypes || (exports.ProfileTypes = ProfileTypes = {}));
 exports.ProfileTypesSchema = new mongoose_1.default.Schema({
     status: {
         type: String,
-        enum: [ProfileTypes.ADMIN, ProfileTypes.PARENT]
+        enum: [ProfileTypes.ADMIN, ProfileTypes.PARENTAL]
     }
 });

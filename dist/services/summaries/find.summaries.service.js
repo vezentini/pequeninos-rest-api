@@ -6,8 +6,7 @@ const interfaces_1 = require("../../entities/interfaces");
 const accounts_1 = require("../accounts");
 const findSummaries = async (input) => {
     let filter = {};
-    console.log(input.profile === enums_1.ProfileTypes.PARENT);
-    if (input.profile === enums_1.ProfileTypes.PARENT) {
+    if (input.profile === enums_1.ProfileTypes.PARENTAL) {
         console.log('entrou no if');
         const listStudentsIds = await (0, accounts_1.mapFilterStudents)(input);
         console.log(listStudentsIds);
