@@ -21,16 +21,13 @@ const upload = (0, multer_1.default)({
     },
 });
 summariesRouter.get('/find', upload.single('file'), async (req, res) => {
-    console.log(req.query);
     const accountId = (0, ramda_1.pathOr)(0, ['accountId'], req.query);
     const profile = (0, ramda_1.pathOr)(enums_1.ProfileTypes.ADMIN, ['profile'], req.query);
     const date = (0, ramda_1.pathOr)('', ['date'], req.query);
-    console.log(accountId);
     const studentsResult = await (0, summaries_1.findSummaries)({ accountId, profile, date });
     res.send(studentsResult);
 });
 summariesRouter.post('/upsert', async (req, res) => {
-    console.log("entrou");
     const upsertResult = await (0, summaries_1.upsertSummary)(req.body);
     res.send(upsertResult);
 });

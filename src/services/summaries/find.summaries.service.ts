@@ -10,10 +10,7 @@ const findSummaries = async (input: CommonFilterInput): Promise<ISummariesList> 
   let filter = {};
 
   if (input.profile === ProfileTypes.PARENTAL) {
-
-    console.log('entrou no if');
     const listStudentsIds = await mapFilterStudents(input)
-    console.log(listStudentsIds);
 
     if (isEmpty(listStudentsIds)) return { summaries: [] }
 

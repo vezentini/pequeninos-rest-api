@@ -26,8 +26,6 @@ const upsertStudent = async (input: StudentInput): Promise<Boolean> => {
   const newKeyUpateAnothersDbs = `${input.id} - ${input.name}`;
 
   if (!isNew && newKeyUpateAnothersDbs !== keyUpateAnothersDbs) {
-
-    console.log('entrou');
     await updateStudentSummaries(keyUpateAnothersDbs, newKeyUpateAnothersDbs);
     await updateStudentAccounts(keyUpateAnothersDbs, newKeyUpateAnothersDbs)
   }

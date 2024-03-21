@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const interfaces_1 = require("../../entities/interfaces");
 const enums_1 = require("../../entities/enums");
 const helper_1 = require("../../helper");
+const ramda_1 = require("ramda");
 const upsertAccount = async (input) => {
     const accountDb = await interfaces_1.Accounts.findOne({ id: input.id });
     let upsertObject = Object.assign({}, input);
@@ -12,10 +13,9 @@ const upsertAccount = async (input) => {
         upsertObject.profile = enums_1.ProfileTypes[input.profile];
     }
     else {
-        upsertObject.password = accountDb.password;
+        upsertObject.password = (0, ramda_1.empty)(input.password) ? accountDb.password : input.password;
         upsertObject.profile = accountDb.profile;
     }
-    console.log(upsertObject);
     await interfaces_1.Accounts.updateOne({ id: upsertObject.id }, upsertObject, { upsert: true });
     return true;
 };

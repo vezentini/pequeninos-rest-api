@@ -2,6 +2,7 @@ import { AccountInput } from '../../entities/inputs';
 import { Accounts } from '../../entities/interfaces';
 import { ProfileTypes } from '../../entities/enums';
 import { generateNumberId } from '../../helper';
+import { empty } from 'ramda';
 
 const upsertAccount = async (input: AccountInput,): Promise<Boolean> => {
   const accountDb = await Accounts.findOne({ id: input.id });
@@ -13,11 +14,9 @@ const upsertAccount = async (input: AccountInput,): Promise<Boolean> => {
     upsertObject.password = input.document;
     upsertObject.profile = ProfileTypes[input.profile as keyof typeof ProfileTypes]
   } else {
-    upsertObject.password = accountDb.password;
+    upsertObject.password = empty(input.password) ? accountDb.password : input.password;
     upsertObject.profile = accountDb.profile;
   }
-
-  console.log(upsertObject);
 
   await Accounts.updateOne(
     { id: upsertObject.id },

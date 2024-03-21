@@ -18,7 +18,6 @@ const upsertStudent = async (input) => {
     await interfaces_1.Students.updateOne({ id: upsertObject.id }, upsertObject, { upsert: true });
     const newKeyUpateAnothersDbs = `${input.id} - ${input.name}`;
     if (!isNew && newKeyUpateAnothersDbs !== keyUpateAnothersDbs) {
-        console.log('entrou');
         await (0, summaries_1.updateStudentSummaries)(keyUpateAnothersDbs, newKeyUpateAnothersDbs);
         await (0, accounts_1.updateStudentAccounts)(keyUpateAnothersDbs, newKeyUpateAnothersDbs);
     }

@@ -7,9 +7,7 @@ const accounts_1 = require("../accounts");
 const findSummaries = async (input) => {
     let filter = {};
     if (input.profile === enums_1.ProfileTypes.PARENTAL) {
-        console.log('entrou no if');
         const listStudentsIds = await (0, accounts_1.mapFilterStudents)(input);
-        console.log(listStudentsIds);
         if ((0, ramda_1.isEmpty)(listStudentsIds))
             return { summaries: [] };
         filter = { studentId: { $in: listStudentsIds } };
