@@ -4,7 +4,7 @@ exports.Notifications = void 0;
 const mongoose_1 = require("mongoose");
 const schema = new mongoose_1.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true,
     },
     title: {

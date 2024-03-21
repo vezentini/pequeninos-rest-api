@@ -1,5 +1,5 @@
 export class NotificationInput {
-  readonly id?: number;
+  readonly id?: string;
   readonly title?: string;
   readonly description?: string;
   readonly photo?: string;

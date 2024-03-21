@@ -1,14 +1,14 @@
 import { Document, Schema, model } from 'mongoose';
 
 export interface INotification {
-  id: number;
+  id: string;
   title: string;
   description: string;
   photo: string;
 }
 
 export default interface INotificationModal extends Document, INotification {
-  id: number;
+  id: string;
   title: string;
   description: string;
   photo: string;
@@ -17,7 +17,7 @@ export default interface INotificationModal extends Document, INotification {
 const schema = new Schema(
   {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     title: {
