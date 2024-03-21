@@ -5,7 +5,6 @@ const enums_1 = require("../../entities/enums");
 const helper_1 = require("../../helper");
 const ramda_1 = require("ramda");
 const upsertAccount = async (input) => {
-    console.log(input);
     const accountDb = await interfaces_1.Accounts.findOne({ id: input.id });
     let upsertObject = Object.assign({}, input);
     if (accountDb === null) {
